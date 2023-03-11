@@ -1,12 +1,19 @@
+if (process.env.NODE_ENV !== 'production') {
+    dotenv.config();
+}
+import dotenv from 'dotenv';
 import express from "express";
 import multer from "multer";
 import morgan from "morgan";
 import cors from "cors";
 import bodyParser from "body-parser";
+import methodOverride from "method-override";
+import authRoutes from "./routes/auth.js";
+import connectToDb from './database/connection.js';
 
 const app = express();
 const upload = multer({ dest: 'uploads/' })
-const PORT = 3000;
+const PORT = 3002;
 
 // middlewares
 app.use(cors());
@@ -21,7 +28,39 @@ app.use(morgan('tiny'));
 app.disable("x-powered-by");
 //configuring request body parsing
 app.use(express.urlencoded({ extended: true }));
+//configuring http verbs
+app.use(methodOverride('_method'));
 
-app.listen(PORT, () => {
-    console.log(`Server Connection Succesfull! Listening to ${PORT}`);
+// middleware for setting response headers
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+    );
+    next();
 });
+
+connectToDb().then(() => {
+    console.log("Database Connected!");
+    try {
+        // Connect to server only when DB is connected.
+        app.listen(PORT, () => {
+            console.log(`Connected to server, listening to port: ${PORT}`);
+        });
+    } catch (error) {
+        console.log("Connection to server failed!!");
+    }
+}).catch(e => console.error(e, "Database connection error"))
+
+
+// middleware routes setup
+app.use('/api', authRoutes);
+
+app.get('/', (req, res) => {
+res.send("Home")
+})
