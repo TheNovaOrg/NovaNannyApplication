@@ -1,17 +1,14 @@
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
+import { createRoutes } from './routes/routes';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="">
-      </header>
-      <main>
-        <h1 className="text-xl font-mono text-red-500 underline">
-          Nanny App!
-        </h1>
-      </main>
-    </div>
-  );
+    <main>
+      <RouterProvider router={createRoutes()}></RouterProvider>
+    </main>
+  )
 }
 
 export default App;
