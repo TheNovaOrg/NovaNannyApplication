@@ -3,15 +3,17 @@ import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { loginUser } from '../services/authService';
+import { useAuthStore } from '../store/authStore';
 
 function Password() {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  // const [searchParams] = useSearchParams();
+  const { username } = useAuthStore(state => state.auth);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = async (formData) => {
     console.log(formData);
     const credentials = {
-      username: searchParams?.get("username"),
+      username,
       password: formData.password
     }
     let loginPromise = loginUser(credentials);
@@ -34,7 +36,7 @@ function Password() {
       <div className="title flex flex-col items-center justify-center space-y-0 mx-auto my-2 px-6">
         {/* <img alt="logo-airbnb" src={logo} className='w-32 h-12 mt-4 object-contain 2xl:h-36 2xl:w-52' /> */}
         <h1 className='text-center text-lg font-mono text-gray-600 tracking-wider 2xl:text-5xl'>
-          Hello! <span className='uppercase italic font-semibold'> {searchParams?.get("username")}</span>
+          Hello! <span className='uppercase italic font-semibold'> {username}</span>
         </h1>
       </div>
 

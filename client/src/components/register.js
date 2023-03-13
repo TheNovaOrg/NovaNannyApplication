@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import { registerUser } from '../services/authService';
 import toast from 'react-hot-toast';
+import { useAuthStore } from '../store/authStore';
 
 function Register() {
     //   const [file, setFile] = useState(avatar);
     //   const profileImgRef = useRef();
+    const { username } = useAuthStore(state => state.auth);
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
     //   const profileImgRegister = register("profile", { required: false });

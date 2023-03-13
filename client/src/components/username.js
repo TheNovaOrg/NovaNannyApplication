@@ -3,15 +3,18 @@ import { useForm } from "react-hook-form";
 import { createSearchParams, Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { validateUserName } from '../utils/validate';
+import { useAuthStore } from '../store/authStore';
 
 function Username() {
+    const setUsername = useAuthStore(state => state.setUsername);
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = async (data) => {
-        console.log(data);
         if (await validateUserName(data?.username)) {
+            // set value of username via central store.
+            setUsername(data?.username);
             // go to password page for login.
-            navigateToPassword(data);   
+            navigateToPassword(data);
         } else {
             toast.error("Username doesn't exist! Please Register.");
         }
@@ -20,9 +23,6 @@ function Username() {
     const navigateToPassword = (formData) => {
         navigate({
             pathname: "/password",
-            search: createSearchParams({
-                username: formData.username
-            }).toString()
         });
     }
 

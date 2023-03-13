@@ -2,6 +2,7 @@ import User from "../models/user.Model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import ENV from '../config.js';
+import otpGenerator from "otp-generator";
 
 /** POST: http://localhost:3002/api/register 
  * @param : {
@@ -11,7 +12,6 @@ import ENV from '../config.js';
 }
 */
 export async function registerUser(req, res) {
-    console.log("Register User was called!");
     try {
         const { username, email, password } = req.body;
         // check if username already exists in DB.
@@ -52,15 +52,12 @@ export async function registerUser(req, res) {
 }
 */
 export async function loginUser(req, res) {
-    console.log("Login user was called!!");
     try {
         const { username, password } = req.body;
         const loggedInUser = await User.findOne({ username });
         if (!loggedInUser) {
             return res.status(404).send("Username not found.");
         }
-        console.log(password);
-        console.log(loggedInUser);
         bcrypt.compare(password, loggedInUser.password)
             .then((pwdCheck) => {
                 if (!pwdCheck) return res.status(400).send({ error: "Don't have password." });
@@ -87,7 +84,6 @@ export async function loginUser(req, res) {
 
 /** GET: http://localhost:3002/api/user/eric123 */
 export async function getUser(req, res) {
-    console.log("Get User was called!");
     const { username } = req.params;
 
     if (!username) return res.status(501).send({ error: "Invalid Username." });
@@ -101,5 +97,72 @@ export async function getUser(req, res) {
         return res.status(201).send(rest);
     } catch (e) {
         return res.status(404).send({ error: "Cannot Find User Data." });
+    }
+}
+
+/** GET: http://localhost:3002/api/generateOTP */
+export async function generateOTP(req, res) {
+    try {
+        req.app.locals.OTP = otpGenerator.generate(6, { lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false });
+        return res.status(200).send({ OTP: req.app.locals.OTP });
+    } catch (error) {
+        res.status(500).send({ error: "Failed to generate OTP." });
+    }
+}
+
+/** GET: http://localhost:3002/api/verifyOTP */
+export async function verifyOTP(req, res) {
+    try {
+        const { OTP } = req.query;
+        if (parseInt(OTP) === parseInt(req.app.locals.OTP)) {
+            // reset OTP value
+            req.app.locals.OTP = null;
+            /// start session for reset password
+            req.app.locals.resetSession = true;
+            return res.status(201).send({ msg: 'OTP Verifification Successsful!' });
+        }
+    } catch (error) {
+        return res.status(400).send({ error: "Invalid OTP" });
+    }
+}
+
+// successfully redirect user when OTP is valid.
+/** GET: http://localhost:3002/api/createResetSession */
+export async function createResetSession(req, res) {
+    if (req.app.locals.resetSession) {
+        req.app.locals.resetSession = false; // allow acccess to this route only once.
+        return res.status(201).send({ isValidSession: req.app.locals.resetSession });
+    }
+    return res.status(440).send({ msg: "Session expired!" });
+}
+
+// update the password when we have valid session
+/** PUT: http://localhost:3002/api/resetPassword */
+export async function resetPassword(req, res) {
+    console.log("Reset Password was called!!");
+    try {
+        if (!req.app.locals.resetSession) return res.status(440).send({ error: "Session expired!" });
+
+        const { username, password } = req.body;
+
+        const foundUser = await User.findOne({ username });
+        if (!foundUser) return res.status(404).send({ error: "User not found!" });
+        console.log(foundUser);
+
+        // hash the new password
+        const hashedPwd = await bcrypt.hash(password, 10);
+        if (!hashedPwd) return res.status(500).send({ error: "Unable to hash password." });
+        console.log(hashedPwd);
+
+        // update the user's password in DB.
+        const updatedUser = await User.updateOne({ _id: foundUser._id }, { password: hashedPwd });
+        if (!updatedUser) return res.status().send({ error: "Failed to update user. Database error!" });
+        if (updatedUser.acknowledged) {
+            req.app.locals.resetSession = false; // reset session
+            console.log("record updated!");
+            return res.status(201).send({ msg: "Record Updated...!" });
+        }
+    } catch (error) {
+        return res.status(401).send({ error });
     }
 }
