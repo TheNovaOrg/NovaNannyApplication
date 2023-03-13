@@ -8,8 +8,9 @@ import morgan from "morgan";
 import cors from "cors";
 import bodyParser from "body-parser";
 import methodOverride from "method-override";
-import authRoutes from "./routes/auth.js";
+import authRoutes from "./routes/authRoutes.js";
 import connectToDb from './database/connection.js';
+import userRoutes from './routes/userRoutes.js';
 
 const app = express();
 const upload = multer({ dest: 'uploads/' })
@@ -60,7 +61,8 @@ connectToDb().then(() => {
 
 // middleware routes setup
 app.use('/api', authRoutes);
+app.use('/api/user', userRoutes);
 
 app.get('/', (req, res) => {
-res.send("Home")
+    res.send("Home")
 })

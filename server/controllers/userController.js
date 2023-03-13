@@ -2,6 +2,7 @@ import User from "../models/user.Model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import ENV from '../config.js';
+
 /** POST: http://localhost:3002/api/register 
  * @param : {
   "username" : "example123",
@@ -81,5 +82,24 @@ export async function loginUser(req, res) {
             })
     } catch (e) {
         res.status(500).send(e);
+    }
+}
+
+/** GET: http://localhost:3002/api/user/eric123 */
+export async function getUser(req, res) {
+    console.log("Get User was called!");
+    const { username } = req.params;
+
+    if (!username) return res.status(501).send({ error: "Invalid Username." });
+
+    try {
+        const user = await User.findOne({ username });
+        if (!user) return res.status(501).send({ error: "Couldn't Find the User." });
+        /** remove password from user */
+        // mongoose return unnecessary data with object so convert it into json
+        const { password, ...rest } = Object.assign({}, user.toJSON());
+        return res.status(201).send(rest);
+    } catch (e) {
+        return res.status(404).send({ error: "Cannot Find User Data." });
     }
 }
