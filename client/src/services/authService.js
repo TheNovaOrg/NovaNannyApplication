@@ -9,9 +9,13 @@ export async function authenticateUser(username) {
     }
 }
 
-export async function registerUser(credentials) {
+export async function registerUser({ username, email, password }) {
     try {
-        const { data } = await axios.post('/api/register', credentials);
+        const { status, data } = await axios.post('/api/register', { username, email, password });
+        /** send registration success email */
+        if (status === 201) {
+            await axios.post('/api/registerEmail', { username, userEmail: email, text: data })
+        }
         return Promise.resolve(data);
     } catch (error) {
         return Promise.reject({ error });

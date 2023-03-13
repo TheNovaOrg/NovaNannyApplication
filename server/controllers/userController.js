@@ -11,7 +11,6 @@ import ENV from '../config.js';
 }
 */
 export async function registerUser(req, res) {
-    console.log("Register User was called!");
     try {
         const { username, email, password } = req.body;
         // check if username already exists in DB.
@@ -52,15 +51,12 @@ export async function registerUser(req, res) {
 }
 */
 export async function loginUser(req, res) {
-    console.log("Login user was called!!");
     try {
         const { username, password } = req.body;
         const loggedInUser = await User.findOne({ username });
         if (!loggedInUser) {
             return res.status(404).send("Username not found.");
         }
-        console.log(password);
-        console.log(loggedInUser);
         bcrypt.compare(password, loggedInUser.password)
             .then((pwdCheck) => {
                 if (!pwdCheck) return res.status(400).send({ error: "Don't have password." });
@@ -87,7 +83,6 @@ export async function loginUser(req, res) {
 
 /** GET: http://localhost:3002/api/user/eric123 */
 export async function getUser(req, res) {
-    console.log("Get User was called!");
     const { username } = req.params;
 
     if (!username) return res.status(501).send({ error: "Invalid Username." });
@@ -101,5 +96,24 @@ export async function getUser(req, res) {
         return res.status(201).send(rest);
     } catch (e) {
         return res.status(404).send({ error: "Cannot Find User Data." });
+    }
+}
+
+
+/** GET: http://localhost:3002/api/generateOTP */
+export async function generateOTP(req, res) {
+    try {
+
+    } catch (error) {
+
+    }
+}
+
+/** GET: http://localhost:3002/api/verifyOTP */
+export async function verifyOTP(req, res) {
+    try {
+
+    } catch (error) {
+
     }
 }
