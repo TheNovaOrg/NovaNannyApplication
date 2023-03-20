@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { registerUser } from '../services/authService';
 import toast from 'react-hot-toast';
 import { useAuthStore } from '../store/authStore';
+import { Toaster } from 'react-hot-toast';
 
 function Register() {
     //   const [file, setFile] = useState(avatar);
@@ -37,6 +38,8 @@ function Register() {
 
     return (
         <div className='flex flex-col justify-center items-center w-96 xl:w-1/3 mx-auto mt-2 mb-2 py-6 rounded-lg drop-shadow-sm shadow-2xl'>
+
+            <Toaster position='top-center' reverseOrder={false}></Toaster>
 
             <span className='text-4xl font-mono w-full text-center text-red-400 pt-4'>Register</span>
 

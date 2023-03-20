@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from 'react-hot-toast';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { generateOTP, verifyOTP } from '../services/authService';
 import { useAuthStore } from '../store/authStore';
 
@@ -24,7 +24,8 @@ function Recovery() {
         // verify OTP.
         try {
             const status = await verifyOTP(username, formData?.OTP);
-            if (status == 201) {
+            console.log("Reset Password -", status);
+            if (status === 201) {
                 toast.success('OTP Verification Successful!');
                 // navigate to reset password page.
                 navigate('/resetpassword');

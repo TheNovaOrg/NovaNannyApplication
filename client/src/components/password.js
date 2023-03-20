@@ -1,9 +1,10 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/authService';
 import { useAuthStore } from '../store/authStore';
+import { Toaster } from 'react-hot-toast';
 
 function Password() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function Password() {
       loginPromise, {
       loading: 'Checking...',
       success: <b>Login Successfully...!</b>,
-      error: <b>Password Not Match!</b>
+      error: <b>Password doesn't Match!</b>
     });
     loginPromise.then(res => {
       const { token } = res;
@@ -32,6 +33,8 @@ function Password() {
 
   return (
     <div className='flex flex-col justify-center items-center h-screen w-96 xl:w-1/3 mx-auto my-3 rounded-xl drop-shadow-2xl shadow-2xl'>
+
+      <Toaster position='top-center' reverseOrder={false}></Toaster>
 
       <div className="title flex flex-col items-center justify-center space-y-0 mx-auto my-2 px-6">
         {/* <img alt="logo-airbnb" src={logo} className='w-32 h-12 mt-4 object-contain 2xl:h-36 2xl:w-52' /> */}

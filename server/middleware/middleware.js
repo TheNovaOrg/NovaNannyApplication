@@ -6,7 +6,8 @@ import ENV from "../config.js";
 export default async function verifyUserExistence(req, res, next) {
     console.log("VerifyUser was called!");
     try {
-        console.log(req.query);
+        console.log(req.body, "Body");
+        console.log(req.query, "Query");
         const { username } = req.method == "GET" ? req.query : req.body;
 
         // check the user
@@ -29,7 +30,7 @@ export function localVariables(req, res, next) {
 }
 
 // middleware for auth token decode
-export default async function authDecodeToken(req, res, next) {
+export async function authDecodeToken(req, res, next) {
     console.log("Decode token was called!");
     try {
         // accessingg authorize header to validate request
@@ -37,7 +38,7 @@ export default async function authDecodeToken(req, res, next) {
 
         const decodedToken = jwt.verify(token, ENV.JWT_SECRET);
 
-        req.user = decodeToken;
+        req.user = decodedToken;
 
         next();
     } catch (error) {

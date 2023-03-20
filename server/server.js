@@ -66,5 +66,5 @@ app.use('/api/user', userRoutes);
 app.use('/api/nanny', nannyRoutes);
 
 app.get('/', (req, res) => {
-    res.send("Home")
+    res.send("Home");
 })
