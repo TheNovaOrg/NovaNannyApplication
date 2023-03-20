@@ -1,4 +1,6 @@
 import User from "../models/user.Model.js";
+import jwt from "jsonwebtoken";
+import ENV from "../config.js";
 
 // middleware to verify username existence in DB.
 export default async function verifyUserExistence(req, res, next) {
@@ -24,4 +26,21 @@ export function localVariables(req, res, next) {
         resetSession: false
     }
     next();
+}
+
+// middleware for auth token decode
+export default async function authDecodeToken(req, res, next) {
+    console.log("Decode token was called!");
+    try {
+        // accessingg authorize header to validate request
+        const token = req.headers.authorization.split(" ")[1];
+
+        const decodedToken = jwt.verify(token, ENV.JWT_SECRET);
+
+        req.user = decodeToken;
+
+        next();
+    } catch (error) {
+        return res.status(401).json({ error: "Authentication Error : Decode Token failure" });
+    }
 }
