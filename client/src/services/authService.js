@@ -67,7 +67,7 @@ export async function resetPassword(username, password) {
 
 export async function createResetSession() {
     try {
-        const { data, status } = await axios.put(`/api/createResetSession`);
+        const { data, status } = await axios.get(`/api/createResetSession`);
         console.log(data);
         return Promise.resolve(status, data);
     } catch (error) {

@@ -54,6 +54,7 @@ export async function registerUser(req, res) {
 export async function loginUser(req, res) {
     try {
         const { username, password } = req.body;
+        console.log(username, password);
         const loggedInUser = await User.findOne({ username });
         if (!loggedInUser) {
             return res.status(404).send("Username not found.");
@@ -130,7 +131,6 @@ export async function verifyOTP(req, res) {
 /** GET: http://localhost:3002/api/createResetSession */
 export async function createResetSession(req, res) {
     if (req.app.locals.resetSession) {
-        req.app.locals.resetSession = false; // allow acccess to this route only once.
         return res.status(201).send({ isValidSession: req.app.locals.resetSession });
     }
     return res.status(440).send({ msg: "Session expired!" });
