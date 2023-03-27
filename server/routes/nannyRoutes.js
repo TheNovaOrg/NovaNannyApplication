@@ -6,6 +6,6 @@ const nannyRoutes = Router();
 /** GET Methods */
 nannyRoutes.route('/getNannies').get(authDecodeToken, nannyController.getNannies); // user with username
 nannyRoutes.route('/getNanniesBySpecialization/:speciality').get(authDecodeToken, nannyController.getNanniesBySpecialization);
-nannyRoutes.route('/getNanniesByPriceRange/:priceRange').get(nannyController.getNanniesByPriceRange);
+nannyRoutes.route('/getNanniesByPriceRange/:priceRange').get(authDecodeToken, nannyController.getNanniesByPriceRange);
 
 export default nannyRoutes;
