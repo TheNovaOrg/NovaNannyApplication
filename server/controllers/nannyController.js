@@ -31,7 +31,7 @@ export async function getNanniesByPriceRange(req, res) {
     try {
         const { priceRange } = req.params;
         const nannies = await Nanny.find({ "price": { $lte: priceRange } });
-        if (!nannies) return res.status(501).send({ error: `Couldn't Find Nannies with ${speciality} specialization.` });
+        if (!nannies) return res.status(501).send({ error: `Couldn't Find Nannies for the specified price range.` });
         console.log(nannies);
         res.status(200).send({ data: nannies });
     } catch (e) {
