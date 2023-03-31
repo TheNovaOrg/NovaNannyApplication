@@ -6,8 +6,6 @@ import ENV from "../config.js";
 export default async function verifyUserExistence(req, res, next) {
     console.log("VerifyUser was called!");
     try {
-        console.log(req.body, "Body");
-        console.log(req.query, "Query");
         const { username } = req.method == "GET" ? req.query : req.body;
 
         // check the user

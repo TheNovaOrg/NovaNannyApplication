@@ -12,6 +12,7 @@ import authRoutes from "./routes/authRoutes.js";
 import connectToDb from './database/connection.js';
 import userRoutes from './routes/userRoutes.js';
 import nannyRoutes from './routes/nannyRoutes.js';
+import reviewRoutes from './routes/reviewRoutes.js';
 
 const app = express();
 const upload = multer({ dest: 'uploads/' })
@@ -59,11 +60,11 @@ connectToDb().then(() => {
     }
 }).catch(e => console.error(e, "Database connection error"))
 
-
 // middleware routes setup
 app.use('/api', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/nanny', nannyRoutes);
+app.use('/api/reviews/', reviewRoutes);
 
 app.get('/', (req, res) => {
     res.send("Home");
