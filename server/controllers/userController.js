@@ -1,4 +1,4 @@
-import User from "../models/user.Model.js";
+import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import ENV from '../config.js';
@@ -54,7 +54,6 @@ export async function registerUser(req, res) {
 export async function loginUser(req, res) {
     try {
         const { username, password } = req.body;
-        console.log(username, password);
         const loggedInUser = await User.findOne({ username });
         if (!loggedInUser) {
             return res.status(404).send("Username not found.");
@@ -147,12 +146,10 @@ export async function resetPassword(req, res) {
 
         const foundUser = await User.findOne({ username });
         if (!foundUser) return res.status(404).send({ error: "User not found!" });
-        console.log(foundUser);
 
         // hash the new password
         const hashedPwd = await bcrypt.hash(password, 10);
         if (!hashedPwd) return res.status(500).send({ error: "Unable to hash password." });
-        console.log(hashedPwd);
 
         // update the user's password in DB.
         const updatedUser = await User.updateOne({ _id: foundUser._id }, { password: hashedPwd });

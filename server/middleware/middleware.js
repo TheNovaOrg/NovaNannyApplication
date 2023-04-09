@@ -1,4 +1,5 @@
-import User from "../models/user.Model.js";
+import User from "../models/user.model.js";
+import Review from "../models/review.model.js";
 import jwt from "jsonwebtoken";
 import ENV from "../config.js";
 
@@ -6,8 +7,6 @@ import ENV from "../config.js";
 export default async function verifyUserExistence(req, res, next) {
     console.log("VerifyUser was called!");
     try {
-        console.log(req.body, "Body");
-        console.log(req.query, "Query");
         const { username } = req.method == "GET" ? req.query : req.body;
 
         // check the user
@@ -44,4 +43,13 @@ export async function authDecodeToken(req, res, next) {
     } catch (error) {
         return res.status(401).json({ error: "Authentication Error : Decode Token failure" });
     }
+}
+
+export async function isReviewAuthor(req, res, next) {
+    const { userId, reviewId } = req.params;
+    const reviews = await Review.findById(reviewId);
+    if (!reviews) return res.status(404).send({ error: "Couldn't find review in the database." });
+    if (!reviews.author.equals(userId)) {
+        return res.status(403).json({ error: "Permission denied to delete review." });
+    } else next();
 }
