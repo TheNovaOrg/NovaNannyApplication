@@ -9,14 +9,14 @@ export async function createReviews(req, res) {
         const user = await User.findById(userId);
         const nannies = await Nanny.findById(nannyId);
         if (!nannies) return res.status(501).send({ error: "Couldn't Find Nannies to create reviews." });
-        const review = new Review(req.body.review);
+        const review = new Review(req.body);
         review.author = user._id;
         nannies.reviews.push(review);
         await nannies.save();
         await review.save();
         res.status(200).send("Review created successfully!");
     } catch (e) {
-        return res.status(404).send({ error: "Something went wrong creating reviews." });
+        return res.status(500).send({ error: "Something went wrong creating reviews." });
     }
 }
 
@@ -24,7 +24,6 @@ export async function createReviews(req, res) {
 export async function deleteReview(req, res) {
     try {
         const { nannyId, reviewId } = req.params;
-        console.log(req.params);
         try {
             await Nanny.findByIdAndUpdate(nannyId, { $pull: { reviews: [reviewId] } });
         } catch (e) {
@@ -37,6 +36,6 @@ export async function deleteReview(req, res) {
         }
         res.status(200).send("Review deleted successfully!");
     } catch (e) {
-        return res.status(404).send({ error: "Something went wrong deleting reviews." });
+        return res.status(500).send({ error: "Something went wrong deleting reviews." });
     }
 };
