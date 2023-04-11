@@ -8,4 +8,12 @@ nannyRoutes.route('/getNannies').get(authDecodeToken, nannyController.getNannies
 nannyRoutes.route('/getNanniesBySpecialization/:speciality').get(authDecodeToken, nannyController.getNanniesBySpecialization);
 nannyRoutes.route('/getNanniesByPriceRange/:priceRange').get(authDecodeToken, nannyController.getNanniesByPriceRange);
 
+/** POST Methods */
+nannyRoutes.route('/create').post(authDecodeToken, nannyController.createNanny);
+
+/** Delete and Update Methods */
+nannyRoutes.route('/:nannyId')
+    .put(authDecodeToken, nannyController.updateNanny)
+    .delete(authDecodeToken, nannyController.deleteNanny);
+
 export default nannyRoutes;
