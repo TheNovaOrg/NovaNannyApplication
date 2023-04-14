@@ -11,10 +11,11 @@ export async function getNannies(req, res) {
     }
 }
 
-/** GET: http://localhost:3002/api/nanny/getNanniesBySpecialization/Infants */
+/** GET: http://localhost:3002/api/nanny/getNanniesBySpecialization/:Infants */
 export async function getNanniesBySpecialization(req, res) {
     try {
         const { speciality } = req.params;
+        console.log(req.params);
         const nannies = await Nanny.find({ specialities: speciality });
         if (!nannies) return res.status(501).send({ error: `Couldn't Find Nannies with ${speciality} specialization.` });
         console.log(nannies);
@@ -42,6 +43,10 @@ export async function createNanny(req, res) {
     console.log("Create Nanny was called!");
     try {
         const nanny = new Nanny(req.body);
+        // nanny.image = {
+        //     path: req.files.path,
+        //     filename: req.files.filename
+        // };
         await nanny.save();
         res.status(201).send("Nanny created successfully!");
     } catch (e) {

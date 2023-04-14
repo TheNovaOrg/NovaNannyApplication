@@ -14,7 +14,6 @@ function Register() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     //   const profileImgRegister = register("profile", { required: false });
     const onSubmit = async (formData) => {
-        console.log(formData);
         let registerPromise = registerUser(formData);
         toast.promise(
             registerPromise,

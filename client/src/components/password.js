@@ -12,7 +12,6 @@ function Password() {
   const { username } = useAuthStore(state => state.auth);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = async (formData) => {
-    console.log(formData);
     const credentials = {
       username,
       password: formData.password
@@ -27,7 +26,7 @@ function Password() {
     loginPromise.then(res => {
       const { token } = res;
       localStorage.setItem("token", token);
-      navigate('/');
+      navigate('/nannies');
     });
   };
 

@@ -11,7 +11,6 @@ function Recovery() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     useEffect(() => {
-        console.log(username);
         generateOTP(username).then((OTP) => {
             console.log(OTP);
             if (OTP) return toast.success('OTP has been send to your email!');

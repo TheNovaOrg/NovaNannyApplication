@@ -9,9 +9,10 @@ export default async function verifyUserExistence(req, res, next) {
     try {
         const { username } = req.method == "GET" ? req.query : req.body;
 
-        // check the user
+        // Check the user
         let exist = await User.findOne({ username });
         if (!exist) return res.status(404).send({ error: "Cannot find User!" });
+
         next();
 
     } catch (error) {
@@ -30,11 +31,11 @@ export function localVariables(req, res, next) {
 
 // middleware for auth token decode
 export async function authDecodeToken(req, res, next) {
-    console.log("Decode token was called!");
     try {
-        // accessingg authorize header to validate request
-        const token = req.headers.authorization.split(" ")[1];
-
+        // accessing authorize header to validate request
+        const token = (req.headers.authorization).toString().split(" ")[1];
+        console.log(token);
+        
         const decodedToken = jwt.verify(token, ENV.JWT_SECRET);
 
         req.user = decodedToken;

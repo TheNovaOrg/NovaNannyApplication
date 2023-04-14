@@ -40,22 +40,24 @@ const NannySchema = new Schema({
     languages: [
         {
             type: String,
-            required: true
+            required: true,
         }
     ],
     specialities: [
         {
             type: String,
-            required: true
+            required: true,
         }
     ],
     price: {
         type: Number,
         required: true
     },
-    fileImg: {
-        type: String
-    },
+    image: {
+        path: String,
+        filename: String
+    }
+    ,
     gender: {
         type: String,
         required: true

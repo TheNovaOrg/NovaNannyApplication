@@ -21,10 +21,10 @@ const PORT = 3002;
 // middlewares
 app.use(cors());
 app.use(express.json());
-// parser for formdata post request
-app.use(bodyParser.urlencoded({ extended: true }));
 // parsing json req body 
 app.use(bodyParser.json());
+// parser for formdata post request
+app.use(bodyParser.urlencoded({ extended: true }));
 // logging http requests on server terminal
 app.use(morgan('tiny'));
 // stack not exposed to hackers
