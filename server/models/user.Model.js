@@ -18,6 +18,10 @@ const UserSchema = new Schema({
         required: [true, "Please provide Password."],
         unique: false
     },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
 });
 
 export default mongoose.model('User', UserSchema);

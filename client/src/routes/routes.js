@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Nannies from "../components/Nannies.js";
 import PageNotFound from "../components/PageNotFound.js";
 import Password from "../components/Password.js";
 import Recovery from "../components/Recovery.js";
@@ -36,6 +37,13 @@ export const createRoutes = () => {
       element: <ProtectRoute>
         <Reset />
       </ProtectRoute>,
+    },
+    {
+      path: "/nannies",
+      element:
+        // <ProtectRoute>
+        <Nannies />
+      // </ProtectRoute>,
     },
     {
       path: '*',
