@@ -52,13 +52,12 @@ function Nannies() {
     const getNanniesBySpecialization = async (speciality) => {
         await fetchNanniesBySpecialization(speciality).then(({ data }) => {
             if (data.length) setNannies(data);
-            else toast.error("No Nannies found for selected specialization.")
+            else toast.error("No Nannies found for selected specialization.");
         }).catch((e) => {
             console.error(e);
-            toast.error("Failed to fetch nannies based on selected specilization.");
+            toast.error("Failed to fetch nannies based on selected specialization.");
         });
     }
-
 
     return (
         <div>
@@ -66,8 +65,12 @@ function Nannies() {
             <Toaster position='top-center' reverseOrder={false}></Toaster>
 
             <div className="flex flex-row-reverse items-center mx-auto my-2 p-2">
+                { 
+                nannies && 
                 <Dropdown className="w-96" options={dropdownOptions} onChange={onSelectOfDropdown} value={defaultOption}
-                    placeholder="Filter nannies by specialization" />
+                placeholder="Filter nannies by specialization" />
+                }
+
             </div>
             <div className='flex flex-col items-center mx-auto'>
                 {

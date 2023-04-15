@@ -11,6 +11,19 @@ export async function getNannies(req, res) {
     }
 }
 
+/** GET: http://localhost:3002/api/nanny/getNanny/:nannyId */
+export async function getNanny(req, res) {
+    console.log("Get Nanny was called!");
+    try {
+        const { nannyId } = req.params;
+        const nanny = await Nanny.findById(nannyId).populate("reviews").exec();
+        if (!nanny) return res.status(501).send({ error: "Couldn't Find Nanny." });
+        res.status(200).send({ data: nanny });
+    } catch (e) {
+        return res.status(404).send({ error: "Cannot Find Nanny Data." });
+    }
+}
+
 /** GET: http://localhost:3002/api/nanny/getNanniesBySpecialization/:Infants */
 export async function getNanniesBySpecialization(req, res) {
     try {
@@ -50,7 +63,7 @@ export async function createNanny(req, res) {
         await nanny.save();
         res.status(201).send("Nanny created successfully!");
     } catch (e) {
-        return res.status(500).send({ error: "Something went wrong creating Nanny." });
+        return res.status(500).send({ error: "Something went wrong creating Nanny.", msg: e.toString() });
     }
 }
 
@@ -62,7 +75,7 @@ export async function updateNanny(req, res) {
         await nanny.save();
         res.status(201).send("Nanny updated successfully!");
     } catch (e) {
-        return res.status(500).send({ error: "Something went wrong updating Nanny." });
+        return res.status(500).send({ error: "Something went wrong updating Nanny.", msg: e.message });
     }
 };
 

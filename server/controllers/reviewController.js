@@ -10,6 +10,7 @@ export async function createReviews(req, res) {
         const nannies = await Nanny.findById(nannyId);
         if (!nannies) return res.status(501).send({ error: "Couldn't Find Nannies to create reviews." });
         const review = new Review(req.body);
+        console.log(req.body);
         review.author = user._id;
         nannies.reviews.push(review);
         await nannies.save();
