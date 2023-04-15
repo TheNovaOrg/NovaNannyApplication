@@ -16,7 +16,12 @@ export async function getNanny(req, res) {
     console.log("Get Nanny was called!");
     try {
         const { nannyId } = req.params;
-        const nanny = await Nanny.findById(nannyId).populate("reviews").exec();
+        const nanny = await Nanny.findById(nannyId).populate({
+            path: 'reviews',
+            populate: {
+                path: 'author'
+            }
+        });
         if (!nanny) return res.status(501).send({ error: "Couldn't Find Nanny." });
         res.status(200).send({ data: nanny });
     } catch (e) {
