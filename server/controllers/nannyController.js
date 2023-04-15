@@ -63,7 +63,7 @@ export async function createNanny(req, res) {
         await nanny.save();
         res.status(201).send("Nanny created successfully!");
     } catch (e) {
-        return res.status(500).send({ error: "Something went wrong creating Nanny." });
+        return res.status(500).send({ error: "Something went wrong creating Nanny.", msg: e.toString() });
     }
 }
 
@@ -75,7 +75,7 @@ export async function updateNanny(req, res) {
         await nanny.save();
         res.status(201).send("Nanny updated successfully!");
     } catch (e) {
-        return res.status(500).send({ error: "Something went wrong updating Nanny." });
+        return res.status(500).send({ error: "Something went wrong updating Nanny.", msg: e.message });
     }
 };
 
