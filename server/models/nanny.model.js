@@ -62,10 +62,18 @@ const NannySchema = new Schema({
         type: String,
         required: true
     },
+    experience: {
+        type: String,
+        required: true
+    },
+    availability: {
+        type: [String],
+        require : true
+    },
     reviews: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Review' //model name
+            ref: 'Review' // model name
         }
     ]
 });

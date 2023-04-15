@@ -8,7 +8,8 @@ const nannyRoutes = Router();
 const upload = multer({ storage: storage });
 
 /** GET Methods */
-nannyRoutes.route('/getNannies').get(authDecodeToken, nannyController.getNannies); // user with username
+nannyRoutes.route('/getNannies').get(authDecodeToken, nannyController.getNannies);
+nannyRoutes.route('/getNanny/:nannyId').get(authDecodeToken, nannyController.getNanny);
 nannyRoutes.route('/getNanniesBySpecialization/:speciality').get(authDecodeToken, nannyController.getNanniesBySpecialization);
 nannyRoutes.route('/getNanniesByPriceRange/:priceRange').get(authDecodeToken, nannyController.getNanniesByPriceRange);
 

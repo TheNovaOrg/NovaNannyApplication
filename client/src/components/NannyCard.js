@@ -1,11 +1,20 @@
 import React from 'react';
 import { HeartIcon, LocationMarkerIcon } from '@heroicons/react/outline';
+import { useNavigate } from "react-router-dom";
 
 function NannyCard({ nanny }) {
 
+    const navigate = useNavigate();
+
+    function onNannyClick() {
+        navigate(`/nannies/nanny/${nanny.firstName}${nanny.lastName}`, {
+            state: nanny
+        });
+    }
+
     return (
         <>
-            <div className='flex mt-3 py-5 px-4 cursor-pointer hover:opacity-80 hover:shadow-lg 
+            <div onClick={onNannyClick} className='flex mt-3 py-5 px-4 cursor-pointer hover:opacity-80 hover:shadow-lg 
             transition duration-100 ease-out hover:translate-x-2 md:transform-none hover:border-l-2 hover:border-red-400'>
 
                 <div className='relative rounded-lg h-72 w-32 md:h-52 md:w-80 flex-shrink-0'>
