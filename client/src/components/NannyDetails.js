@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { fetchNanny } from '../services/nannyService';
-import { LocationMarkerIcon, PhoneIcon, MailIcon, UserIcon, CurrencyDollarIcon, SparklesIcon, NewspaperIcon, BriefcaseIcon } from '@heroicons/react/outline';
+import { LocationMarkerIcon, PhoneIcon, MailIcon, UserIcon, CurrencyDollarIcon, BriefcaseIcon } from '@heroicons/react/outline';
 
 function NannyDetails() {
     const [nanny, setNanny] = useState();
@@ -82,7 +82,7 @@ function NannyDetails() {
                                         <dt class="text-sm font-medium text-gray-500">I can speak :</dt>
                                         {
                                             nanny?.languages &&
-                                            <div class="grid grid-cols-2 gap-4">
+                                            <div class="grid grid-cols-3 gap-3">
                                                 {
                                                     nanny?.languages.map((language) => {
                                                         return (
@@ -97,7 +97,7 @@ function NannyDetails() {
                                         <dt class="text-sm font-medium text-gray-500">Specialities :</dt>
                                         {
                                             nanny?.specialities &&
-                                            <div class="grid grid-cols-2 gap-4">
+                                            <div class="grid grid-cols-3 gap-3">
                                                 {
                                                     nanny?.specialities.map((speciality) => {
                                                         return (
