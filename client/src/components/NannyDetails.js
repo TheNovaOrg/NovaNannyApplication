@@ -65,20 +65,6 @@ function NannyDetails() {
                                         </div>
                                     </div>
                                     <div class="sm:col-span-1">
-                                        <dt class="text-sm font-medium text-gray-500">I can speak :</dt>
-                                        <div className='flex items-center mt-1'>
-                                            <NewspaperIcon className='h-5 text-sm' />
-                                            <dd class="text-sm text-gray-900 px-1">{nanny?.languages.join(', ') || "N/A"}</dd>
-                                        </div>
-                                    </div>
-                                    <div class="sm:col-span-1">
-                                        <dt class="text-sm font-medium text-gray-500">Specialities :</dt>
-                                        <div className='flex items-center mt-1'>
-                                            <SparklesIcon className='h-5 text-sm' />
-                                            <dd class="text-sm text-gray-900 px-1">{nanny?.specialities.join(', ') || "N/A"}</dd>
-                                        </div>
-                                    </div>
-                                    <div class="sm:col-span-1">
                                         <dt class="text-sm font-medium text-gray-500">Price :</dt>
                                         <div className='flex items-center mt-1'>
                                             <CurrencyDollarIcon className='h-5 text-sm' />
@@ -91,6 +77,36 @@ function NannyDetails() {
                                             <BriefcaseIcon className='h-5 text-sm' />
                                             <dd class="text-sm text-gray-900 px-1">7 years of experience</dd>
                                         </div>
+                                    </div>
+                                    <div class="sm:col-span-1">
+                                        <dt class="text-sm font-medium text-gray-500">I can speak :</dt>
+                                        {
+                                            nanny?.languages &&
+                                            <div class="grid grid-cols-2 gap-4">
+                                                {
+                                                    nanny?.languages.map((language) => {
+                                                        return (
+                                                            <li class="text-sm text-gray-700">{language}</li>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="sm:col-span-1">
+                                        <dt class="text-sm font-medium text-gray-500">Specialities :</dt>
+                                        {
+                                            nanny?.specialities &&
+                                            <div class="grid grid-cols-2 gap-4">
+                                                {
+                                                    nanny?.specialities.map((speciality) => {
+                                                        return (
+                                                            <li class=" text-sm text-gray-700">{speciality}</li>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
+                                        }
                                     </div>
                                     <div class="sm:col-span-1">
                                         <dt class="text-sm font-medium text-gray-500">Availability :</dt>
