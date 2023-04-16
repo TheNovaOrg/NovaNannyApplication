@@ -111,8 +111,20 @@ export const createRoutes = () => {
     {
       path: "/nannies/*",
       children: [
-        { index: true, element: <Nannies /> },
-        { path: "nanny/:name", element: <NannyDetails /> }
+        {
+          index: true,
+          element:
+            <ProtectRoute>
+              <Nannies />
+            </ProtectRoute>
+        },
+        {
+          path: "nanny/:name",
+          element:
+            <ProtectRoute>
+              <NannyDetails />
+            </ProtectRoute>
+        }
       ]
     },
     {
