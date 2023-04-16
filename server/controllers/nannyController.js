@@ -20,6 +20,11 @@ export async function getNanny(req, res) {
             path: 'reviews',
             populate: {
                 path: 'author'
+                // fields: {
+                //     _id : 1,
+                //     username : 1,
+                //     isAdmin : 1
+                // }
             }
         });
         if (!nanny) return res.status(501).send({ error: "Couldn't Find Nanny." });

@@ -13,7 +13,7 @@ function Nannies() {
     const { username } = useAuthStore(state => state.auth);
     const [nannies, setNannies] = useState();
     const dropdownOptions = [
-        { value: 0, label: 'Filter nannies by specialization' },
+        { value: 0, label: 'Filter nannies by specialization...' },
         { value: 'Infants', label: 'Infants' },
         { value: 'Tutoring', label: 'Tutoring' },
         { value: 'School Age', label: 'School Age' },
@@ -61,9 +61,7 @@ function Nannies() {
 
     return (
         <div>
-
             <Toaster position='top-center' reverseOrder={false}></Toaster>
-
             <div className="flex flex-row-reverse items-center mx-auto my-2 p-2">
                 { 
                 nannies && 

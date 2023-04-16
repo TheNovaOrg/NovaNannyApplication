@@ -36,7 +36,6 @@ function NannyCard({ nanny }) {
                     <p className='text-sm flex-grow text-gray-500 pt-1 flex-wrap'>{nanny?.description}</p>
 
                     <div className='text-sm flex flex-col p-1 text-gray-500'>
-                        <p className='flex-grow flex-wrap pt-1'>Languages : {nanny?.languages?.join(" , ")}</p>
                         <p className='flex-grow flex-wrap pt-1'>Specialities : {nanny?.specialities?.join(" , ")}</p>
                     </div>
 
