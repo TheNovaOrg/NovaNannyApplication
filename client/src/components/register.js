@@ -89,7 +89,7 @@ function Register() {
                             Password should contain minimum eight characters, at least one letter and one number.</span>}
 
                     <button type='submit'
-                        className="bg-[#F43F5E] font-semibold rounded-md tracking-widest px-3 py-3 text-stone-100
+                        className="bg-[#F43F5E] font-semibold rounded-md tracking-widest my-90 px-3 py-3 text-stone-100
                  align-middle hover:bg-[#F43F5E]/90 hover:scale-105 hover:transition-all ease-in-out delay-150
                  hover:text-[#F43F5E] hover:bg-red-100 hover:border hover:border-[#F43F5E]">
                         Register

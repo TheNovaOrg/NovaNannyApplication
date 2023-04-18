@@ -7,6 +7,7 @@ import Reset from "../components/Reset.js";
 import Username from "../components/Username.js";
 import { ProtectRoute } from "./routeGuards.js";
 import Home from "../components/home/Home.js";
+import Parents from "../components/Parent.js"
 
 export const createRoutes = () => {
 
@@ -23,6 +24,10 @@ export const createRoutes = () => {
     {
       path: "/register",
       element: <Register />,
+    },
+    {
+      path: "/parents",
+      element: <Parents />,
     },
     {
       path: "/password",
