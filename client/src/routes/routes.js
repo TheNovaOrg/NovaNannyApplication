@@ -6,13 +6,19 @@ import Register from "../components/Register.js";
 import Reset from "../components/Reset.js";
 import Username from "../components/Username.js";
 import { ProtectRoute } from "./routeGuards.js";
+import Home from "../components/home/Home.js";
 
 export const createRoutes = () => {
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Username />,
+      // element: <Username />,
+      element: <Home />
+    },
+    {
+      path: "/login",
+      element: <Username />
     },
     {
       path: "/register",

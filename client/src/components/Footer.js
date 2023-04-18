@@ -16,10 +16,10 @@ function Footer() {
                   <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">Resources</h2>
                   <ul class="text-gray-600 dark:text-white font-medium">
                       <li class="mb-4">
-                          <a href="https://flowbite.com/" class="hover:underline dark:hover:text-[#c60b2b]">Flowbite</a>
+                          <a href="https://flowbite.com/" class="hover:underline dark:hover:text-[#c60b2b]">Blog</a>
                       </li>
                       <li>
-                          <a href="https://tailwindcss.com/" class="hover:underline dark:hover:text-[#c60b2b]">Tailwind CSS</a>
+                          <a href="/#FAQ" class="hover:underline dark:hover:text-[#c60b2b]">FAQ</a>
                       </li>
                   </ul>
               </div>
@@ -27,11 +27,12 @@ function Footer() {
                   <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
                   <ul class="text-gray-600 dark:text-white font-medium">
                       <li class="mb-4">
-                          <a href="https://github.com/themesberg/flowbite" class="hover:underline dark:hover:text-[#c60b2b] ">Github</a>
+                          <a href="https://www.instagram.com/" target="_blank" class="hover:underline dark:hover:text-[#c60b2b] ">Instagram</a>
                       </li>
                       <li>
-                          <a href="https://discord.gg/4eeurUVvTy" class="hover:underline dark:hover:text-[#c60b2b]">Discord</a>
+                          <a href="https://github.com/CECormier/nanny-app" target="_blank" class="hover:underline dark:hover:text-[#c60b2b]">Github</a>
                       </li>
+                     
                   </ul>
               </div>
               <div>

@@ -41,8 +41,15 @@ function Register() {
 
             <Toaster position='top-center' reverseOrder={false}></Toaster>
 
-            <span className='text-4xl font-mono w-full text-center text-red-400 pt-4'>Register</span>
-
+            <div className="title flex flex-col items-center justify-center space-y-0 mx-auto my-2 px-6">
+            <img alt="logo Nova Nanny" src="./img/logopic.png" className='w-32 h-12 mt-4 object-contain 2xl:h-36 2xl:w-52 animate-bounce' />
+            <span className='text-4xl font-mono w-full text-center text-red-400 pt-4'></span>
+            <span className='py-4 text-xl text-center text-red-400 2xl:text-5xl'>
+                Nova Nanny </span>
+            <span className='py-4 text-xl w-2/3 text-center text-red-400 2xl:text-5xl'>
+                Registry
+            </span>
+            </div>
             <form className='px-1' onSubmit={handleSubmit(onSubmit)}>
 
                 <div className='profile flex justify-center py-4'>
@@ -56,21 +63,22 @@ function Register() {
             }} name="profile" id="profile" /> */}
                 </div>
 
-                <div className="flex flex-col items-center justify-center space-y-4">
+                <div className="flex flex-col items-center justify-center space-y-4 w-full">
 
-                    <input className='contact-input w-96 px-3 2xl:w-5/6' type="text" placeholder='Username'
+                    <input className="contact-input text-gray-700 rounded-lg py-2 px-4 block w-full transition duration-500 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-[#f21a3f] focus:ring-opacity-50 animate-pulse" type="text" placeholder='Username'
                         {...register("username", { required: true })}
                         aria-invalid={errors.Name ? "true" : "false"} />
                     {errors.username?.type === 'required' && <p role="alert" className='text-left font-mono text-sm text-[#F43F5E]/70'>
                         Username is required</p>}
 
-                    <input className="contact-input w-96 px-3 2xl:w-5/6" type="text" placeholder='Email'
+                        <input className="contact-input text-gray-700 rounded-lg py-2 px-4 block w-full transition duration-500 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-[#f21a3f] focus:ring-opacity-50 animate-pulse" type="text" placeholder='Email'
                         {...register("email", { required: true, pattern: /\S+@\S+\.\S+/g })}
                         aria-invalid={errors.email ? "true" : "false"} />
                     {errors.email?.type === 'required' && <p role="alert" className='w-96 text-center font-mono text-sm text-[#F43F5E]/70'>
                         Email is required</p>}
 
-                    <input className='contact-input w-96 px-3 2xl:w-5/6' type="password" placeholder='Password'
+                        <input className="contact-input text-gray-700 rounded-lg py-2 px-4 block w-full transition duration-500 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-[#f21a3f] focus:ring-opacity-50 animate-pulse" type="text" placeholder='Password'
+
                         {...register("password", { required: true, pattern: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/g })}
                         aria-invalid={errors.Email ? "true" : "false"} />
                     {errors.password?.type === 'required' &&
@@ -91,11 +99,9 @@ function Register() {
 
             </form>
 
-            <div className='pb-4 mb-3 mt-1'>
-                <span className='text-gray-500 text-center'>
-                    Already Register? <Link className='text-red-500 underline' to="/login">Login Now</Link></span>
+            <div className='text-center mb-0 mt-2'>
+                <span className='text-[#FF8FA3]'>Already Registered? <Link className='text-red-500 underline' to="/login">Login Now</Link></span>
             </div>
-
         </div>
     )
 }
