@@ -1,13 +1,19 @@
 import { RouterProvider } from 'react-router-dom';
 import './App.css';
+import Footer from './components/Footer';
+import Header from './components/Header';
 import { createRoutes } from './routes/routes';
 
 function App() {
 
   return (
-    <main>
-      <RouterProvider router={createRoutes()}></RouterProvider>
-    </main>
+    <>
+      <Header />
+      <main>
+        <RouterProvider router={createRoutes()}></RouterProvider>
+      </main>
+      <Footer />
+    </>
   )
 }
 
