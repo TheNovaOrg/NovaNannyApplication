@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
     .btn-display {
         @apply px-5 py-2 text-gray-500 tracking-widest text-xs uppercase border border-[#242424] rounded-full cursor-pointer

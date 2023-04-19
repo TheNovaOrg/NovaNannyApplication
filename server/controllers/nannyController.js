@@ -1,4 +1,5 @@
 import Nanny from "../models/nanny.model.js";
+import { storage, cloudinaryConfig } from "../Cloudinary/config.js";
 
 /** GET: http://localhost:3002/api/nanny/getNannies */
 export async function getNannies(req, res) {
@@ -13,18 +14,13 @@ export async function getNannies(req, res) {
 
 /** GET: http://localhost:3002/api/nanny/getNanny/:nannyId */
 export async function getNanny(req, res) {
-    console.log("Get Nanny was called!");
     try {
         const { nannyId } = req.params;
         const nanny = await Nanny.findById(nannyId).populate({
             path: 'reviews',
             populate: {
-                path: 'author'
-                // fields: {
-                //     _id : 1,
-                //     username : 1,
-                //     isAdmin : 1
-                // }
+                path: 'author',
+                select: ["username", "isAdmin", "_id"]
             }
         });
         if (!nanny) return res.status(501).send({ error: "Couldn't Find Nanny." });
@@ -38,7 +34,6 @@ export async function getNanny(req, res) {
 export async function getNanniesBySpecialization(req, res) {
     try {
         const { speciality } = req.params;
-        console.log(req.params);
         const nannies = await Nanny.find({ specialities: speciality });
         if (!nannies) return res.status(501).send({ error: `Couldn't Find Nannies with ${speciality} specialization.` });
         console.log(nannies);
@@ -63,13 +58,8 @@ export async function getNanniesByPriceRange(req, res) {
 
 /** POST: http://localhost:3002/api/nanny/create */
 export async function createNanny(req, res) {
-    console.log("Create Nanny was called!");
     try {
-        const nanny = new Nanny(req.body);
-        // nanny.image = {
-        //     path: req.files.path,
-        //     filename: req.files.filename
-        // };
+        const nanny = new Nanny(req.body.nanny);
         await nanny.save();
         res.status(201).send("Nanny created successfully!");
     } catch (e) {
@@ -81,7 +71,7 @@ export async function createNanny(req, res) {
 export async function updateNanny(req, res) {
     try {
         const { nannyId } = req.params;
-        const nanny = await Nanny.findByIdAndUpdate(nannyId, { ...req.body });
+        const nanny = await Nanny.findByIdAndUpdate(nannyId, { ...req.body.nanny });
         await nanny.save();
         res.status(201).send("Nanny updated successfully!");
     } catch (e) {

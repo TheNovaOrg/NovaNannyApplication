@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserIcon, StarIcon } from '@heroicons/react/solid';
-import { MdDeleteForever } from 'react-icons/md'
+import { MdDeleteForever } from 'react-icons/md';
 import { v4 as uuidv4 } from 'uuid';
 
 function Review({ review, handleDeleteReview, loggedInUser }) {

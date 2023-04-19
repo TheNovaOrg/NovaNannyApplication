@@ -15,22 +15,27 @@ import nannyRoutes from './routes/nannyRoutes.js';
 import reviewRoutes from './routes/reviewRoutes.js';
 
 const app = express();
-const upload = multer({ dest: 'uploads/' })
+// const upload = multer({ dest: 'uploads/' })
 const PORT = 3002;
 
 // middlewares
 app.use(cors());
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.json());
+// app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+//     extended: true
+// }));
 // parsing json req body 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 // parser for formdata post request
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 // logging http requests on server terminal
 app.use(morgan('tiny'));
 // stack not exposed to hackers
 app.disable("x-powered-by");
 //configuring request body parsing
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 //configuring http verbs
 app.use(methodOverride('_method'));
 

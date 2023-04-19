@@ -1,7 +1,12 @@
 import mongoose from 'mongoose';
+import ENV from "../config.js";
 
 async function connectToDb() {
 
+    // Connection to ATLAS.
+    // const db = await mongoose.connect(ENV.ATLAS_URI);
+
+    // connection to local mongo db with conn string.
     mongoose.connect('mongodb://localhost:27017/nannyApp', {
         useNewUrlParser: true,
         useUnifiedTopology: true,

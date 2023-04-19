@@ -38,3 +38,39 @@ export async function fetchNanniesBySpecialization(speciality) {
         return { error: "Failed to fetch Nanny Data for selected specilization." };
     }
 }
+
+export async function addNanny(formData) {
+    try {
+        const { data, status } = (
+            await axios.post(`/api/nanny/create`, { nanny: formData }
+            )
+        );
+        return { data, status };
+    } catch (error) {
+        return { error: "Something went wrong. Failed to create nanny." };
+    }
+}
+
+export async function updateNanny(nannyId, formData) {
+    try {
+        const { data, status } = (
+            await axios.put(`/api/nanny/${nannyId}`, { nanny: formData }
+            )
+        );
+        return { data, status };
+    } catch (error) {
+        return { error: "Something went wrong. Failed to create nanny." };
+    }
+}
+
+export async function removeNanny(nannyId) {
+    try {
+        const { data, status } = (
+            await axios.delete(`/api/nanny/${nannyId}`
+            )
+        );
+        return { data, status };
+    } catch (error) {
+        return { error: "Something went wrong. Failed to delete nanny." };
+    }
+} 
