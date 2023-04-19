@@ -52,7 +52,7 @@ function Nannies() {
 
     async function fetchUserDetails() {
         const user = await getUserInfo(username);
-        if (user) setLoggedInUser(user);
+        if (user) setLoggedInUser(user.data);
     }
 
     function onSelectOfDropdown(selectedOption) {

@@ -11,6 +11,8 @@ import Reset from "../components/Reset.js";
 import Username from "../components/Username.js";
 import Home from "../components/Home/Home.js";
 import { ProtectRoute } from "./routeGuards.js";
+import Contact from "../components/Contact.js";
+import Parent from "../components/Parent.js";
 
 export const createRoutes = () => {
 
@@ -18,6 +20,14 @@ export const createRoutes = () => {
     {
       path: "/",
       element: <Home />,
+    },
+    {
+      path: "/contact",
+      element: <Contact />,
+    },
+    {
+      path: "/parents",
+      element: <Parent />,
     },
     {
       path: "/login",

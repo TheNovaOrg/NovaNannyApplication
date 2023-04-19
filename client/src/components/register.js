@@ -7,12 +7,9 @@ import { useAuthStore } from '../store/authStore';
 import { Toaster } from 'react-hot-toast';
 
 function Register() {
-    //   const [file, setFile] = useState(avatar);
-    //   const profileImgRef = useRef();
     const { username } = useAuthStore(state => state.auth);
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    //   const profileImgRegister = register("profile", { required: false });
     const onSubmit = async (formData) => {
         let registerPromise = registerUser(formData);
         toast.promise(
@@ -23,7 +20,11 @@ function Register() {
                 error: <b>Could not Register.</b>
             }
         );
-        registerPromise.then(function () { navigate('/') });
+        registerPromise.then(function () { navigate('/') })
+            .catch(({ error }) => {
+                console.log(error);
+                toast.error("Something went wrong. Please try again!");
+            });
     };
 
     return (

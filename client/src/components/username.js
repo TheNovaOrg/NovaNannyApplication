@@ -33,7 +33,7 @@ function Username() {
 
             <div className="title flex flex-col items-center justify-center space-y-0 mx-auto px-6">
                 <div className='flex flex-col space-y-1 mb-2'>
-                    <img alt="logo Nova Nanny" src="./img/logopic.png" className='w-32 h-12 mt-2 object-contain 2xl:h-36 2xl:w-52 animate-bounce' />
+                    <img alt="logo Nova Nanny" src="./img/logopic.png" className='w-32 h-14 mt-2 object-contain 2xl:h-36 2xl:w-52 animate-bounce' />
                     <span className='text-xl text-center text-red-400 2xl:text-5xl'>
                         Nova Nanny
                     </span>
