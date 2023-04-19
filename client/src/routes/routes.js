@@ -8,6 +8,10 @@ import Username from "../components/Username.js";
 import { ProtectRoute } from "./routeGuards.js";
 import Home from "../components/home/Home.js";
 import Parents from "../components/Parent.js"
+import Section4 from "../components/home/Section4.js";
+import Contact from "../components/Contact.js";
+
+
 
 export const createRoutes = () => {
 
@@ -28,6 +32,10 @@ export const createRoutes = () => {
     {
       path: "/parents",
       element: <Parents />,
+    },
+    {
+      path: "/contact",
+      element: <Contact />,
     },
     {
       path: "/password",

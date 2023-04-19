@@ -99,7 +99,7 @@ function Register() {
 
             </form>
 
-            <div className='text-center mb-0 mt-2'>
+            <div className='text-center mb-0 mt-2 relative bottom-0 '>
                 <span className='text-[#FF8FA3]'>Already Registered? <Link className='text-red-500 underline' to="/login">Login Now</Link></span>
             </div>
         </div>

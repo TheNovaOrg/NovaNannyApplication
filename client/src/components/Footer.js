@@ -3,11 +3,11 @@ import React from 'react';
 
 function Footer() {
   return (
-    <footer class="bg-[#f21a3f] Footer">
+    <footer class="bg-[#F43F5E] border-gray-200 Footer">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-6">
         <div class="md:flex md:justify-between">
           <div class="mb-2 md:mb-0">
-              <a href="#" class="flex items-center">
+              <a href="/" class="flex items-center">
                   <img src="img/logoblank.png" class="mr-3 h-48"  alt="Nanny Logo" />
               </a>
           </div>
@@ -16,10 +16,10 @@ function Footer() {
                   <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">Resources</h2>
                   <ul class="text-white dark:text-white font-medium">
                       <li class="mb-4">
-                          <a href="https://flowbite.com/" class="hover:underline dark:hover:text-[#c60b2b] hover:text-[#c60b2b]">Blog</a>
+                          <a href="/" class="hover:underline dark:hover:text-[#c60b2b] hover:text-[#c60b2b]">Blog</a>
                       </li>
                       <li>
-                          <a href="/#FAQ" class="hover:underline dark:hover:text-[#c60b2b] hover:text-[#c60b2b]">FAQ</a>
+                          <a href="/" class="hover:underline dark:hover:text-[#c60b2b] hover:text-[#c60b2b]">FAQ</a>
                       </li>
                   </ul>
               </div>

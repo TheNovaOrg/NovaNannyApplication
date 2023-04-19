@@ -42,15 +42,15 @@ function Username() {
                 </span>
             </div>
     
-
-            <form className="flex flex-col space-y-6 mt-1 w-full 2xl:my-auto justify-center align-middle items-center mx-auto"
+                <form className="flex flex-col items-center justify-center space-y-4 py-2 px-4 "
+            /* <form className="flex flex-col space-y-6 mt-1 w-full 2xl:my-auto justify-center align-middle items-center mx-auto" */
                 onSubmit={handleSubmit(onSubmit)}>
 
                 {/* <div className='profile flex justify-center py-2'>
                     <img src={avatar} className="w-40 h-40 shadow-xl rounded-full 2xl:h-52 2xl:w-52" alt="avatar" />
                 </div> */}
 
-                <input className="contact-input text-gray-700 rounded-lg w-96 px-3 2xl:w-5/6 transition duration-500 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-[#f21a3f] focus:ring-opacity-50 animate-pulse" type="text" placeholder='Username'
+                <input className="contact-input text-gray-700 rounded-lg py-2 px-4 block w-full transition duration-500 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-[#f21a3f] focus:ring-opacity-50 animate-pulse" type="text" placeholder='Username'
                     {...register("username", { required: true })}
                     aria-invalid={errors.Name ? "true" : "false"} />
                 {errors.username?.type === 'required' && <p role="alert" className='px-1 py-0 text-left font-mono text-sm text-[#F43F5E]/70'>
@@ -65,7 +65,7 @@ function Username() {
 
             </form>
 
-            <div className="text-center mb-2 mt-2">
+            <div className="text-center mb-0 mt-2 absolute inset-x-0 bottom-0 h-8">
                 <span className='text-[#FF8FA3]'>Not a Member? <Link className='text-red-500 underline' to="/register">Register Now</Link></span>
             </div>
         </div>
