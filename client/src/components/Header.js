@@ -4,7 +4,7 @@ import { useAuthStore } from '../store/authStore';
 
 function Header() {
     const { username, active } = useAuthStore(state => state.auth);
-    
+
     function handleLogout() {
         logoutUser();
     }
@@ -16,7 +16,7 @@ function Header() {
                     <a href="#" className="flex items-center">
                         <img src="/img/logopic.png" className="mr-3 h-6 sm:h-12" alt="Nanny Logo" />
                         <span className="self-center text-xl font-semibold whitespace-nowrap text-white">Nova Nanny</span>
-                    </a>;
+                    </a>
                     <div className="flex items-center lg:order-2">
                         {
                             (username) ?
