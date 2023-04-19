@@ -8,7 +8,6 @@ import { Toaster } from 'react-hot-toast';
 
 function Password() {
   const navigate = useNavigate();
-  // const [searchParams] = useSearchParams();
   const { username } = useAuthStore(state => state.auth);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = async (formData) => {

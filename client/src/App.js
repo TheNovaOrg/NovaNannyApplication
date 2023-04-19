@@ -1,4 +1,4 @@
-import { RouterProvider } from 'react-router-dom';
+import { RouterProvider, Router } from 'react-router-dom';
 import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -10,7 +10,8 @@ function App() {
     <>
       <Header />
       <main>
-        <RouterProvider router={createRoutes()}></RouterProvider>
+        <RouterProvider router={createRoutes()}>
+        </RouterProvider>
       </main>
       <Footer />
     </>

@@ -9,3 +9,15 @@ export async function getUserInfo(username) {
         return { error: "Password doesn't Match...!" };
     }
 }
+
+// logout user
+export async function logoutUser() {
+    localStorage.removeItem("token");
+    // try {
+    //     const refreshToken = localStorage.getItem("token");
+    //     const { data } = await axios.delete(`/api/logout`, { refreshToken });
+    //     return { data };
+    // } catch (error) {
+    //     return { error: "Password doesn't Match...!" };
+    // }
+}
