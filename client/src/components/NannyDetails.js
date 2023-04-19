@@ -82,8 +82,8 @@ function NannyDetails() {
                                 <div className="flex flex-col items-center justify-center cursor-pointer px-4 py-5 bg-white sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
                                     <div className="md:col-span-2 flex items-center justify-center">
                                         <img className="object-fit w-40 h-40 align-middle rounded-full shadow-lg hover:opacity-95"
-                                            src={nanny?.image?.path}
-                                            alt={nanny?.image?.filename} />
+                                            src={nanny?.image}
+                                            alt={nanny?.image} />
                                     </div>
                                     <h3 className="text-2xl leading-6 font-medium text-gray-900 mt-4">
                                         {nanny?.firstName} {nanny?.lastName}
@@ -92,8 +92,8 @@ function NannyDetails() {
                                         <div className="mt-1 flex items-center text-sm text-gray-700">
                                             <div className="px-6 py-4 flex justify-center items-center">
                                                 <LocationMarkerIcon className='h-4 text-lg px-2' />
-                                                <span className="text-gray-700">{nanny?.addresses[0].address}</span>
-                                                <span className="text-gray-700 px-1">{nanny?.addresses[0].postalCode}</span>
+                                                <span className="text-gray-700">{nanny?.address}</span>
+                                                <span className="text-gray-700 px-1">{nanny?.postalCode}</span>
                                             </div>
                                         </div>
                                     </div>

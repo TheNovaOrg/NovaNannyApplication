@@ -46,13 +46,13 @@ function Register() {
 
                 <div className='profile flex justify-center py-4'>
                     {/* <label htmlFor="profile">
-            <img src={file || avatar} ref={profileImgRef} className="w-36 h-36 shadow-xl rounded-full" alt="profile-pic" />
-          </label> */}
-                    {/* <input type="file" {...profileImgRegister} hidden={true}
-            onChange={e => {
-              profileImgRegister.onChange(e);
-              handleImageUpload(e);
-            }} name="profile" id="profile" /> */}
+                        <img src={file || avatar} ref={profileImgRef} className="w-36 h-36 shadow-xl rounded-full" alt="profile-pic" />
+                    </label>
+                    <input type="file" {...profileImgRegister} hidden={true}
+                        onChange={e => {
+                            profileImgRegister.onChange(e);
+                            handleImageUpload(e);
+                        }} name="profile" id="profile" /> */}
                 </div>
 
                 <div className="flex flex-col items-center justify-center space-y-4">

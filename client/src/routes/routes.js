@@ -1,5 +1,6 @@
-import { Children } from "react";
 import { createBrowserRouter } from "react-router-dom";
+import AddNanny from "../components/AddNanny.js";
+import EditNanny from "../components/EditNanny.js";
 import Nannies from "../components/Nannies.js";
 import NannyDetails from "../components/NannyDetails.js";
 import PageNotFound from "../components/PageNotFound.js";
@@ -124,7 +125,21 @@ export const createRoutes = () => {
             <ProtectRoute>
               <NannyDetails />
             </ProtectRoute>
-        }
+        },
+        {
+          path: "addNanny",
+          element:
+            <ProtectRoute>
+              <AddNanny />
+            </ProtectRoute>
+        },
+        {
+          path: "updateNanny",
+          element:
+            <ProtectRoute>
+              <EditNanny />
+            </ProtectRoute>
+        },
       ]
     },
     {

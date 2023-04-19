@@ -20,22 +20,18 @@ const NannySchema = new Schema({
         unique: [true],
         lowercase: true
     },
-    addresses: [
-        {
-            address: {
-                type: String,
-                required: true
-            },
-            postalCode: {
-                type: String,
-                required: true
-            }
-        }
-    ],
+    address: {
+        type: String,
+        required: true
+    },
+    postalCode: {
+        type: String,
+        required: true
+    },
     phone: {
         type: String,
-        required: true,
-        unique: [true]
+        unique: [true, "Please provide unique Phone number."],
+        required: true
     },
     languages: [
         {
@@ -54,8 +50,9 @@ const NannySchema = new Schema({
         required: true
     },
     image: {
-        path: String,
-        filename: String
+        // path: String,
+        // filename: String
+        type: String,
     }
     ,
     gender: {
@@ -68,7 +65,7 @@ const NannySchema = new Schema({
     },
     availability: {
         type: [String],
-        require : true
+        require: true
     },
     reviews: [
         {
