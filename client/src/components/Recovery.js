@@ -67,7 +67,9 @@ function Recovery() {
                     <span className='py-4 text-sm text-left text-gray-500'>
                         Enter 6 digit OTP sent to your email address.
                     </span>
-                    <input className="contact-input w-96 px-3 2xl:w-5/6" type="text" placeholder='OTP'
+                    <input className="contact-input text-gray-700 rounded-lg w-96 px-3 2xl:w-5/6 transition duration-500
+                 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline 
+                 focus:ring-2 focus:ring-[#f21a3f] focus:ring-opacity-50 animate-pulse" type="text" placeholder='OTP'
                         {...register("OTP", { required: true, minLength: 6, maxLength: 6, pattern: /^(0|[1-9][0-9]*)$/g })}
                         aria-invalid={errors.Name ? "true" : "false"} />
                     {errors.OTP?.type === 'required' && <p role="alert" className='px-1 py-0 text-center font-mono text-sm text-[#F43F5E]/70'>

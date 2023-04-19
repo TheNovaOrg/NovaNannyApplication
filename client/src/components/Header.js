@@ -4,7 +4,7 @@ import { useAuthStore } from '../store/authStore';
 
 function Header() {
     const { username, active } = useAuthStore(state => state.auth);
-    console.log(active);
+    
     function handleLogout() {
         logoutUser();
     }

@@ -31,21 +31,24 @@ function Username() {
 
             <Toaster position='top-center' reverseOrder={false}></Toaster>
 
-            <div className="title flex flex-col items-center justify-center space-y-0 mx-auto my-2 px-6">
-                {/* <img alt="logo-airbnb" src={logo} className='w-32 h-12 mt-4 object-contain 2xl:h-36 2xl:w-52' /> */}
-                <span className='py-4 text-xl font-mono w-2/3 text-center text-red-400 2xl:text-5xl'>
-                    Nova Nanny
+            <div className="title flex flex-col items-center justify-center space-y-0 mx-auto px-6">
+                <div className='flex flex-col space-y-1 mb-2'>
+                    <img alt="logo Nova Nanny" src="./img/logopic.png" className='w-32 h-12 mt-2 object-contain 2xl:h-36 2xl:w-52 animate-bounce' />
+                    <span className='text-xl text-center text-red-400 2xl:text-5xl'>
+                        Nova Nanny
+                    </span>
+                </div>
+                <span className='py-4 mt-2 text-xl w-2/3 text-center text-red-400 2xl:text-5xl'>
+                    Log in
                 </span>
             </div>
 
             <form className="flex flex-col space-y-6 mt-1 w-full 2xl:my-auto justify-center align-middle items-center mx-auto"
                 onSubmit={handleSubmit(onSubmit)}>
 
-                {/* <div className='profile flex justify-center py-2'>
-                    <img src={avatar} className="w-40 h-40 shadow-xl rounded-full 2xl:h-52 2xl:w-52" alt="avatar" />
-                </div> */}
-
-                <input className="contact-input w-96 px-3 2xl:w-5/6" type="text" placeholder='username'
+                <input className="contact-input text-gray-700 rounded-lg w-96 px-3 2xl:w-5/6 transition duration-500
+                 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline 
+                 focus:ring-2 focus:ring-[#f21a3f] focus:ring-opacity-50 animate-pulse" type="text" placeholder='username'
                     {...register("username", { required: true })}
                     aria-invalid={errors.Name ? "true" : "false"} />
                 {errors.username?.type === 'required' && <p role="alert" className='px-1 py-0 text-left font-mono text-sm text-[#F43F5E]/70'>
