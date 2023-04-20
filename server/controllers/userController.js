@@ -41,7 +41,7 @@ export async function registerUser(req, res) {
         }
     } catch (e) {
         console.log(e, "Either Username or Email already exists!");
-        res.status(500).send(e);
+        res.status(500).send({ error: "Either Username or Email already exists!" });
     }
 }
 
@@ -163,3 +163,17 @@ export async function resetPassword(req, res) {
         return res.status(401).send({ error });
     }
 }
+
+// /** DELETE: http://localhost:3002/api/logout */
+// export async function logoutUser(req, res) {
+//     console.log("Logout was called!!");
+//     try {
+//         const { refreshToken } = req.body;
+//         console.log(refreshToken);
+//         if(!refreshToken) return res.status(400).send("Bad Request");
+//         const token = jwt.verify(refreshToken);
+//         if(token === refreshToken)
+//     } catch (e) {
+//         return res.status(401).send({ e });
+//     }
+// }

@@ -91,7 +91,7 @@ function NannyDetails() {
                                     <div className="sm:flex sm:items-center">
                                         <div className="mt-1 flex items-center text-sm text-gray-700">
                                             <div className="px-6 py-4 flex justify-center items-center">
-                                                <LocationMarkerIcon className='h-4 text-lg px-2' />
+                                                <LocationMarkerIcon className='h-4 text-lg px-2 text-[#F43F5E]' />
                                                 <span className="text-gray-700">{nanny?.address}</span>
                                                 <span className="text-gray-700 px-1">{nanny?.postalCode}</span>
                                             </div>
@@ -109,28 +109,28 @@ function NannyDetails() {
                                         <div className="sm:col-span-1">
                                             <dt className="text-sm font-medium text-gray-500">Email :</dt>
                                             <div className='flex items-center mt-1'>
-                                                <MailIcon className='h-5 text-sm' />
+                                                <MailIcon className='h-5 text-sm text-[#F43F5E]' />
                                                 <dd className="text-sm text-gray-900 px-1">{nanny?.email || "N/A"}</dd>
                                             </div>
                                         </div>
                                         <div className="sm:col-span-1">
                                             <dt className="text-sm font-medium text-gray-500">Phone Number :</dt>
                                             <div className='flex items-center mt-1'>
-                                                <PhoneIcon className='h-5 text-sm' />
+                                                <PhoneIcon className='h-5 text-sm text-[#F43F5E]' />
                                                 <dd className="text-sm text-gray-900 px-1">{nanny?.phone || "N/A"}</dd>
                                             </div>
                                         </div>
                                         <div className="sm:col-span-1">
                                             <dt className="text-sm font-medium text-gray-500">Price :</dt>
                                             <div className='flex items-center mt-1'>
-                                                <CurrencyDollarIcon className='h-5 text-sm' />
+                                                <CurrencyDollarIcon className='h-5 text-sm text-[#F43F5E]' />
                                                 <dd className="text-sm text-gray-900 px-1">{nanny?.price} <span className='text-xs text-gray-900'>per hour</span></dd>
                                             </div>
                                         </div>
                                         <div className="sm:col-span-1">
                                             <dt className="text-sm font-medium text-gray-500">Experience :</dt>
                                             <div className='flex items-center mt-1'>
-                                                <BriefcaseIcon className='h-5 text-sm' />
+                                                <BriefcaseIcon className='h-5 text-sm text-[#F43F5E]' />
                                                 <dd className="text-sm text-gray-900 px-1">{nanny?.experience || 0} years of experience</dd>
                                             </div>
                                         </div>

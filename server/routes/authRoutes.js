@@ -18,4 +18,7 @@ authRoutes.route('/createResetSession').get(userController.createResetSession);
 // Put Routes
 authRoutes.route('/resetPassword').put(verifyUserExistence, userController.resetPassword);
 
+// Delete Routes
+// userRoutes.route("/logout").delete(userController.logoutUser);
+
 export default authRoutes;

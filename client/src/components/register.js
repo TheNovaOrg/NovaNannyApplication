@@ -7,12 +7,9 @@ import { useAuthStore } from '../store/authStore';
 import { Toaster } from 'react-hot-toast';
 
 function Register() {
-    //   const [file, setFile] = useState(avatar);
-    //   const profileImgRef = useRef();
     const { username } = useAuthStore(state => state.auth);
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    //   const profileImgRegister = register("profile", { required: false });
     const onSubmit = async (formData) => {
         let registerPromise = registerUser(formData);
         toast.promise(
@@ -23,53 +20,43 @@ function Register() {
                 error: <b>Could not Register.</b>
             }
         );
-        registerPromise.then(function () { navigate('/') });
+        registerPromise.then(function () { navigate('/login') })
+            .catch(({ error }) => {
+                console.log(error);
+                toast.error("Something went wrong. Please try again!");
+            });
     };
-
-    //   const handleImageUpload = (e) => {
-    //     console.log(e.target.files[0]);
-    //     if (e.target.files[0]) {
-    //       setFile(URL.createObjectURL(e.target.files[0]));
-    //     }
-    //     else setFile('');
-    //     console.log(file);
-    //   }
 
     return (
         <div className='flex flex-col justify-center items-center w-96 xl:w-1/3 mx-auto mt-2 mb-2 py-6 rounded-lg drop-shadow-sm shadow-2xl'>
 
             <Toaster position='top-center' reverseOrder={false}></Toaster>
 
-            <span className='text-4xl font-mono w-full text-center text-red-400 pt-4'>Register</span>
+            <span className='text-3xl font-mono w-full text-center text-red-400 pt-4 mb-3'>Register</span>
 
             <form className='px-1' onSubmit={handleSubmit(onSubmit)}>
 
-                <div className='profile flex justify-center py-4'>
-                    {/* <label htmlFor="profile">
-                        <img src={file || avatar} ref={profileImgRef} className="w-36 h-36 shadow-xl rounded-full" alt="profile-pic" />
-                    </label>
-                    <input type="file" {...profileImgRegister} hidden={true}
-                        onChange={e => {
-                            profileImgRegister.onChange(e);
-                            handleImageUpload(e);
-                        }} name="profile" id="profile" /> */}
-                </div>
-
                 <div className="flex flex-col items-center justify-center space-y-4">
 
-                    <input className='contact-input w-96 px-3 2xl:w-5/6' type="text" placeholder='Username'
+                    <input className="contact-input text-gray-700 rounded-lg w-96 px-3 2xl:w-5/6 transition duration-500
+                 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline 
+                 focus:ring-2 focus:ring-[#f21a3f] focus:ring-opacity-50 animate-pulse"  type="text" placeholder='Username'
                         {...register("username", { required: true })}
                         aria-invalid={errors.Name ? "true" : "false"} />
                     {errors.username?.type === 'required' && <p role="alert" className='text-left font-mono text-sm text-[#F43F5E]/70'>
                         Username is required</p>}
 
-                    <input className="contact-input w-96 px-3 2xl:w-5/6" type="text" placeholder='Email'
+                    <input className="contact-input text-gray-700 rounded-lg w-96 px-3 2xl:w-5/6 transition duration-500
+                 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline 
+                 focus:ring-2 focus:ring-[#f21a3f] focus:ring-opacity-50 animate-pulse"  type="text" placeholder='Email'
                         {...register("email", { required: true, pattern: /\S+@\S+\.\S+/g })}
                         aria-invalid={errors.email ? "true" : "false"} />
                     {errors.email?.type === 'required' && <p role="alert" className='w-96 text-center font-mono text-sm text-[#F43F5E]/70'>
                         Email is required</p>}
 
-                    <input className='contact-input w-96 px-3 2xl:w-5/6' type="password" placeholder='Password'
+                    <input className="contact-input text-gray-700 rounded-lg w-96 px-3 2xl:w-5/6 transition duration-500
+                 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline 
+                 focus:ring-2 focus:ring-[#f21a3f] focus:ring-opacity-50 animate-pulse"  type="password" placeholder='Password'
                         {...register("password", { required: true, pattern: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/g })}
                         aria-invalid={errors.Email ? "true" : "false"} />
                     {errors.password?.type === 'required' &&

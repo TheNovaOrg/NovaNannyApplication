@@ -53,7 +53,9 @@ function Reset() {
         <form className="flex flex-col space-y-6 mt-1 w-full 2xl:my-auto justify-center align-middle items-center mx-auto"
           onSubmit={handleSubmit(onSubmit)}>
 
-          <input className='contact-input w-96 px-3 2xl:w-5/6' type="password" placeholder='Password'
+          <input className="contact-input text-gray-700 rounded-lg w-96 px-3 2xl:w-5/6 transition duration-500
+                 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline 
+                 focus:ring-2 focus:ring-[#f21a3f] focus:ring-opacity-50 animate-pulse" type="password" placeholder='Password'
             {...register("password", { required: true, pattern: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/g })}
             aria-invalid={errors.Email ? "true" : "false"} />
           {errors.password?.type === 'required' &&
@@ -63,7 +65,9 @@ function Reset() {
             <span role="alert" className='px-1 text-center overflow-ellipsis font-mono text-sm text-[#F43F5E]/70'>
               Password should contain minimum eight characters, at least one letter and one number.</span>}
 
-          <input className='contact-input w-96 px-3 2xl:w-5/6' type="password" placeholder='Confirm Password'
+          <input className="contact-input text-gray-700 rounded-lg w-96 px-3 2xl:w-5/6 transition duration-500
+                 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline 
+                 focus:ring-2 focus:ring-[#f21a3f] focus:ring-opacity-50 animate-pulse" type="password" placeholder='Confirm Password'
             {...register("confirmPassword", { required: true, pattern: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/g })}
             aria-invalid={errors.Email ? "true" : "false"} />
           {errors.confirmPassword?.type === 'required' &&

@@ -52,7 +52,7 @@ function Nannies() {
 
     async function fetchUserDetails() {
         const user = await getUserInfo(username);
-        if (user) setLoggedInUser(user);
+        if (user) setLoggedInUser(user.data);
     }
 
     function onSelectOfDropdown(selectedOption) {
@@ -99,7 +99,7 @@ function Nannies() {
 
     return (
         <div>
-            <Toaster position='top-center' reverseOrder={false}></Toaster>
+            <Toaster position='top-center' containerClassName='mt-16' reverseOrder={false}></Toaster>
 
             {
                 loggedInUser?.isAdmin &&
